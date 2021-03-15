@@ -24,6 +24,11 @@ RUN apt-get update
 
 RUN apt-get install -y sbt
 
-RUN curl -fsSL https://deb.nodesource.com/setup_14.16.0 | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash -
 RUN apt-get update
 RUN apt-get install -y nodejs
+
+EXPOSE 9000
+EXPOSE 3000
+
+VOLUME /common_vol
