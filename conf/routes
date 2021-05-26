@@ -1,0 +1,12 @@
+POST    /addproduct                 controllers.ProductController.addProduct
+GET     /products                   controllers.ProductController.getProducts
+GET     /product/:id                controllers.ProductController.getProduct(id: Int)
+GET     /deleteproduct/:id          controllers.ProductController.delete(id: Int)
+
+POST    /addcategory                controllers.CategoryController.addCategory
+GET     /categories                 controllers.CategoryController.getCategories
+GET     /category/:id               controllers.CategoryController.getCategory(id: Int)
+GET     /deletecategory/:id         controllers.CategoryController.delete(id: Int)
+
+
+
