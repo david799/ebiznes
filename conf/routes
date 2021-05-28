@@ -1,12 +1,49 @@
-POST    /addproduct                 controllers.ProductController.addProduct
-GET     /products                   controllers.ProductController.getProducts
-GET     /product/:id                controllers.ProductController.getProduct(id: Int)
-GET     /deleteproduct/:id          controllers.ProductController.delete(id: Int)
+POST    /addaddress                 controllers.AddressController.addAddress
+GET     /addresses                  controllers.AddressController.getAddresses
+GET     /address/:id                controllers.AddressController.getAddress(id: Int)
+GET     /deleteaddress/:id          controllers.AddressController.delete(id: Int)
 
 POST    /addcategory                controllers.CategoryController.addCategory
 GET     /categories                 controllers.CategoryController.getCategories
 GET     /category/:id               controllers.CategoryController.getCategory(id: Int)
 GET     /deletecategory/:id         controllers.CategoryController.delete(id: Int)
 
+POST    /addcoupon                  controllers.CouponController.addCoupon
+GET     /coupons                    controllers.CouponController.getCoupons
+GET     /coupon/:id                 controllers.CouponController.getCoupon(id: Int)
+GET     /deletecoupon/:id           controllers.CouponController.delete(id: Int)
 
+POST    /addcustomer                controllers.CustomerController.addCustomer
+GET     /customers                  controllers.CustomerController.getCustomers
+GET     /customer/:id               controllers.CustomerController.getCustomer(id: Int)
+GET     /deletecustomer/:id         controllers.CustomerController.delete(id: Int)
 
+POST    /addorder                   controllers.OrderController.addOrder
+GET     /orders                     controllers.OrderController.getOrders
+GET     /order/:id                  controllers.OrderController.getOrder(id: Int)
+GET     /deleteorder/:id            controllers.OrderController.delete(id: Int)
+
+POST    /addorderedproduct          controllers.OrderedProductController.addOrderedProduct
+GET     /orderedproducts            controllers.OrderedProductController.getOrderedProducts
+GET     /orderedproduct/:id         controllers.OrderedProductController.getOrderedProduct(id: Int)
+GET     /deleteorderedproduct/:id   controllers.OrderedProductController.delete(id: Int)
+
+POST    /addpayment                 controllers.PaymentController.addPayment
+GET     /payments                   controllers.PaymentController.getPayments
+GET     /payment/:id                controllers.PaymentController.getPayment(id: Int)
+GET     /deletepayment/:id          controllers.PaymentController.delete(id: Int)
+
+POST    /addproduct                 controllers.ProductController.addProduct
+GET     /products                   controllers.ProductController.getProducts
+GET     /product/:id                controllers.ProductController.getProduct(id: Int)
+GET     /deleteproduct/:id          controllers.ProductController.delete(id: Int)
+
+POST    /addrating                 controllers.RatingController.addRating
+GET     /ratings                   controllers.RatingController.getRatings
+GET     /rating/:id                controllers.RatingController.getRating(id: Int)
+GET     /deleterating/:id          controllers.RatingController.delete(id: Int)
+
+POST    /addreturn                 controllers.ReturnController.addReturn
+GET     /returns                   controllers.ReturnController.getReturns
+GET     /return/:id                controllers.ReturnController.getReturn(id: Int)
+GET     /deletereturn/:id          controllers.ReturnController.delete(id: Int)
