@@ -13,9 +13,10 @@ export function CreateCategory() {
     }
 
     function AddCategory() {
-        let json = {}
-        json['id'] = 0
-        json['name'] = newCategoryName;
+        let json = {
+            'id': 0,
+            'name': newCategoryName
+        }
         axios.post(`http://localhost:9000/addcategory`,
             json,
             {
@@ -24,7 +25,7 @@ export function CreateCategory() {
                 }
             }
         ).then(res => {
-            
+
         })
     }
 
@@ -39,12 +40,10 @@ export function CreateCategory() {
             <div className="px-md-5 pt-md-4">
                 <h1>Dodaj nową kategorię</h1>
                 <Form>
-                    <Row>
-                        <Form.Group controlId='newCategoryName'>
-                            <Form.Label>Nazwa kategorii</Form.Label>
-                            <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setNewCategoryName(e.target.value); }} />
-                        </Form.Group>
-                    </Row>
+                    <Form.Group controlId='newCategoryName'>
+                        <Form.Label>Nazwa kategorii</Form.Label>
+                        <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setNewCategoryName(e.target.value); }} />
+                    </Form.Group>
                     <Button variant="primary" type='submit' onClick={handleSubmit}>Dodaj kategorie</Button>
                 </Form>
             </div>

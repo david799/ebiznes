@@ -2,10 +2,10 @@
 
 CREATE TABLE "orderedProduct" (
                                   "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                                  "customer" INT NOT NULL,
+                                  "order" INT NOT NULL,
                                   "product" INT NOT NULL,
-                                  FOREIGN KEY(customer) references customer(id),
-                                  FOREIGN KEY(product) references product(id)
+                                  FOREIGN KEY("order") references "order"(id),
+                                  FOREIGN KEY("product") references "product"(id)
 );
 
 # --- !Downs

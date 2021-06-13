@@ -41,6 +41,10 @@ class OrderedProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvid
     orderedProduct.filter(_.id === id).result.headOption
   }
 
+  def getOrderProducts(order_id: Int)= db.run {
+    orderedProduct.filter(_.order === order_id).result
+  }
+
   def delete(id: Int): Future[Unit] = db.run(orderedProduct.filter(_.id === id).delete).map(_ => ())
 
   def update(id: Int, new_ordered_product: OrderedProduct): Future[Unit] = {

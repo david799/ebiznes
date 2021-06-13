@@ -1,11 +1,10 @@
 import React from 'react';
 import ProductsList from './components/products_list'
-import ProductPreview from './components/product_preview'
 import CreateProduct from './components/create_product'
 import CreateCategory from './components/create_category'
 import OrdersList from './components/orders_list'
 import OrderPreview from './components/order_preview'
-import OrderProduct from './components/order_product'
+import Order from './components/order'
 import Login from './components/login'
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
@@ -45,24 +44,19 @@ export function Main() {
                 <Nav.Item><Nav.Link href="/#/create_product">Stwórz produkt</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/create_category">Stwórz kategorie</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/orders_list">Lista zamówień</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/wyceny/przegladaj">Wyceny</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/#/login">Zaloguj</Nav.Link></Nav.Item>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
         <Switch>
           <MyRoute path="/products_list" component={ProductsList} />
-          <MyRoute path="/product_preview/:id">
-            <ProductPreview />
-          </MyRoute>
           <MyRoute path="/create_product" component={CreateProduct} />
           <MyRoute path="/create_category" component={CreateCategory} />
           <MyRoute path="/orders_list" component={OrdersList} />
-          <MyRoute path="/order_preview">
-            <OrderPreview />
-          </MyRoute>
-          <MyRoute path="/order_product" component={OrderProduct} />
-          <MyRoute path="/zaloguj" component={Login} />
+          <MyRoute path="/order_preview" component={OrderPreview}/>
+          <MyRoute path="/order" component={Order}/>
+          <MyRoute path="/login" component={Login} />
           <MyRoute component={Login} />
         </Switch>
       </Router>

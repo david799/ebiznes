@@ -6,7 +6,7 @@
         <entry key="untitled9">
           <value>
             <ProjectSettingsEntry>
-              <option name="sourceDir" value="C:\Users\s\Documents\GitHub\ebiznes\app" />
+              <option name="sourceDir" value="C:\Users\s\Documents\GitHub\ebiznes\scala\app" />
               <option name="confDir" value="C:\Users\s\Documents\GitHub\ebiznes\scala\app" />
               <option name="playDistrPath" value="$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/jars/play_2.12-2.8.1.jar" />
               <option name="templateImports">
