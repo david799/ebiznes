@@ -1,5 +1,5 @@
 
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Badge } from 'react-bootstrap';
 import { withRouter, useHistory } from 'react-router-dom'
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -28,8 +28,6 @@ export function OrdersList() {
             state: {'order_id': order_id}
         });
     }
-    let colouring_index = 0;
-    let colours = [{ 'background-color': '#fff' }, { 'background-color': '#e8e8e8' }]
     
     return (
         <>
@@ -43,14 +41,11 @@ export function OrdersList() {
                 <h1>Lista zamówień</h1>
                 {
                     orders.map((order) => {
-                        colouring_index++
                         return (
                             <div>
-                                <Row style={colours[colouring_index % 2]} className="my-1" onClick={() => handleViewOrder(order.id)}>
-                                    <Col><b>Id:</b> {order.id}</Col>
-                                    <Col><b>Imie i nazwisko:</b> {order.address.name}</Col>
-                                    <Col><b>Adres linia1:</b> {order.address.address_line1}</Col>
-                                    <Col><b>Adres linia2:</b> {order.address.address_line2}</Col>
+                                <Row className="my-1">
+                                    <Badge className="m-1" variant="light"><h5><b>Id:</b> {order.id}</h5></Badge>
+                                    <Button onClick={() => handleViewOrder(order.id)}>Zobacz szczegóły</Button>
                                 </Row>
                             </div>
                         )

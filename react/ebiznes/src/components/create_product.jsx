@@ -27,7 +27,6 @@ export function CreateProduct() {
     }, [])
 
     let handleSubmit = event => {
-        event.preventDefault();
         AddProduct()
     }
 
@@ -39,7 +38,6 @@ export function CreateProduct() {
             "category": newProductCategory,
             "price": parseFloat(newProductPrice),
         }
-        console.log(json)
         axios.post(`http://localhost:9000/addproduct`,
             json,
             {
@@ -62,7 +60,7 @@ export function CreateProduct() {
             />
             <div className="px-md-5 pt-md-4">
                 <h1>Dodaj nowy produkt</h1>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group controlId='newProductName'>
                         <Form.Label>Nazwa produktu</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setNewProductName(e.target.value); }} />
@@ -89,7 +87,7 @@ export function CreateProduct() {
                             <Form.Control disabled type="text" value={newProductCategoryName} />
                         </InputGroup>
                     </Form.Group>
-                    <Button variant="primary" type='submit' onClick={handleSubmit}>Dodaj produkt</Button>
+                    <Button variant="primary" type='submit'>Dodaj produkt</Button>
                 </Form>
             </div>
         </>

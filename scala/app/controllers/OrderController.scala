@@ -58,7 +58,7 @@ class OrderController @Inject()(orderRepository: OrderRepository, customerReposi
       Await.ready(orderedProductRepository.create(order.id, product_id), Duration.Inf).value.get.get
     }
 
-    Ok("Created")
+    Ok(order.id.toString)
   }
 }
 

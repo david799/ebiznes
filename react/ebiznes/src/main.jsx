@@ -3,6 +3,7 @@ import ProductsList from './components/products_list'
 import CreateProduct from './components/create_product'
 import CreateCategory from './components/create_category'
 import OrdersList from './components/orders_list'
+import CustomersList from './components/customers_list'
 import OrderPreview from './components/order_preview'
 import Order from './components/order'
 import Login from './components/login'
@@ -44,6 +45,7 @@ export function Main() {
                 <Nav.Item><Nav.Link href="/#/create_product">Stwórz produkt</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/create_category">Stwórz kategorie</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/orders_list">Lista zamówień</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/#/clients_list">Lista klientów</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/login">Zaloguj</Nav.Link></Nav.Item>
               </Nav>
             </Navbar.Collapse>
@@ -54,6 +56,7 @@ export function Main() {
           <MyRoute path="/create_product" component={CreateProduct} />
           <MyRoute path="/create_category" component={CreateCategory} />
           <MyRoute path="/orders_list" component={OrdersList} />
+          <MyRoute path="/clients_list" component={CustomersList}/>
           <MyRoute path="/order_preview" component={OrderPreview}/>
           <MyRoute path="/order" component={Order}/>
           <MyRoute path="/login" component={Login} />

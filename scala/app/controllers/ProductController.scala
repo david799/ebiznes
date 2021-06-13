@@ -47,7 +47,7 @@ class ProductController @Inject()(productsRepo: ProductRepository, cc: MessagesC
     val product_json = request.body.asJson.get
     val product = product_json.as[Product]
     productsRepo.create(product.name, product.description, product.category, product.price)
-    Redirect("/products")
+    Ok("Created")
   }
 }
 

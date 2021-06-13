@@ -40,7 +40,8 @@ export function OrderPreview() {
             }
         ).then(res => {
             history.push({
-                pathname: '/orders_list',
+                pathname: '/order',
+                state: {'order_id': res.data}
             });
         })
     }

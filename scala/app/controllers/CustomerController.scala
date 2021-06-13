@@ -22,8 +22,9 @@ class CustomerController @Inject()(customerRepository: CustomerRepository, cc: M
   }
 
   def getCustomers: Action[AnyContent] = Action.async { implicit request =>
-    val temp = customerRepository.list()
-    temp.map( customers => Ok(Json.toJson(customers)).as("application/json"))
+    val customers = customerRepository.list()
+
+    customers.map( customers => Ok(Json.toJson(customers)).as("application/json"))
   }
 
   def getCustomer(id: Int): Action[AnyContent] = Action.async { implicit request =>
