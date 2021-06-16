@@ -38,8 +38,8 @@ class OrderedProductController @Inject()(orderedProductRepository: OrderedProduc
   }
 
   def addOrderedProduct(): Action[AnyContent] = Action { implicit request =>
-    val orderedproduct_json = request.body.asJson.get
-    val orderedproduct = orderedproduct_json.as[OrderedProduct]
+    val orderedProductJson = request.body.asJson.get
+    val orderedproduct = orderedProductJson.as[OrderedProduct]
     orderedProductRepository.create(orderedproduct.order, orderedproduct.product)
     Ok("Created")
   }

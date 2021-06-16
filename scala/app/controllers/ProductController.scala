@@ -44,8 +44,8 @@ class ProductController @Inject()(productsRepo: ProductRepository, cc: MessagesC
   }
 
   def addProduct(): Action[AnyContent] = Action { implicit request =>
-    val product_json = request.body.asJson.get
-    val product = product_json.as[Product]
+    val productJson = request.body.asJson.get
+    val product = productJson.as[Product]
     productsRepo.create(product.name, product.description, product.category, product.price)
     Ok("Created")
   }

@@ -41,11 +41,11 @@ class AddressController @Inject()(addressRepository: AddressRepository, cc: Mess
   }
 
   def addAddress(): Action[AnyContent] = Action { implicit request =>
-    val address_json = request.body.asJson.get
-    val address = address_json.as[Address]
-    addressRepository.create(address.name, address.customer, address.address_line1, address.address_line2)
+    val addressJson = request.body.asJson.get
+    val address = addressJson.as[Address]
+    addressRepository.create(address.name, address.customer, address.addressLine1, address.addressLine2)
     Ok("Created")
   }
 }
 
-case class CreateAddressForm(name: String, customer: Int, address_line1: String, address_line2: String)
+case class CreateAddressForm(name: String, customer: Int, addressLine1: String, addressLine2: String)

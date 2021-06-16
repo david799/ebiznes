@@ -38,8 +38,8 @@ class CouponController @Inject()(couponRepository: CouponRepository, cc: Message
   }
 
   def addCoupon(): Action[AnyContent] = Action { implicit request =>
-    val coupon_json = request.body.asJson.get
-    val coupon = coupon_json.as[Coupon]
+    val couponJson = request.body.asJson.get
+    val coupon = couponJson.as[Coupon]
     couponRepository.create(coupon.name, coupon.discount)
     Ok("Created")
   }

@@ -37,7 +37,7 @@ class OrderController @Inject()(orderRepository: OrderRepository, customerReposi
       val temp_product = Await.ready(productRepository.getById(orderedProduct.product), Duration.Inf).value.get.get
       products = temp_product :: products
     }
-    val orderForFrontend = OrderForFrontend(id, address.name, address.address_line1, address.address_line2, products)
+    val orderForFrontend = OrderForFrontend(id, address.name, address.addressLine1, address.addressLine2, products)
 
     Ok(Json.toJson(orderForFrontend))
   }
