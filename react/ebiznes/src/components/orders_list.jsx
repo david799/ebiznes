@@ -1,5 +1,5 @@
 
-import { Form, Button, Row, Col, Badge } from 'react-bootstrap';
+import { Button, Row, Badge } from 'react-bootstrap';
 import { withRouter, useHistory } from 'react-router-dom'
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -10,7 +10,7 @@ export function OrdersList() {
 
     const getOrders = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/orders`).then(res => {
+            await axios.get(`http://localhost:9000/orders`).then(res => {
                 setOrders(res.data)
             });
         } catch (e) {

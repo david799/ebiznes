@@ -1,5 +1,5 @@
 
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Row, Col } from 'react-bootstrap';
 import { withRouter, useLocation } from 'react-router-dom'
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -15,7 +15,7 @@ export function Order() {
 
     const getOrder = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/order/` + orderId).then(res => {
+            await axios.get(`http://localhost:9000/order/` + orderId).then(res => {
                 setOrder(res.data)
             });
         } catch (e) {

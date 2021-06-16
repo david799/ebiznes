@@ -1,4 +1,4 @@
-import { Form, Button, Row } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 import axios from "axios";
 import React, { useState } from "react";
@@ -23,9 +23,7 @@ export function CreateCategory() {
                     'Content-Type': 'application/json'
                 }
             }
-        ).then(res => {
-
-        })
+        )
     }
 
     return (

@@ -1,4 +1,4 @@
-import { Form, Button, Dropdown, DropdownButton, InputGroup, FormControl } from 'react-bootstrap';
+import { Form, Button, Dropdown, DropdownButton, InputGroup } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -14,7 +14,7 @@ export function CreateProduct() {
 
     const getCategories = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/categories`).then(res => {
+            await axios.get(`http://localhost:9000/categories`).then(res => {
                 setCategories(res.data)
             });
         } catch (e) {
@@ -45,9 +45,7 @@ export function CreateProduct() {
                     'Content-Type': 'application/json'
                 }
             }
-        ).then(res => {
-
-        })
+        )
     }
 
     return (
