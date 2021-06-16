@@ -47,3 +47,8 @@ POST    /addreturn                 controllers.ReturnController.addReturn
 GET     /returns                   controllers.ReturnController.getReturns
 GET     /return/:id                controllers.ReturnController.getReturn(id: Int)
 GET     /deletereturn/:id          controllers.ReturnController.delete(id: Int)
+
+POST    /signUp                        controllers.SignUpController.signUp
+POST    /signIn                        controllers.SignInController.signIn
+POST    /signOut                       controllers.SignInController.signOut
+GET     /authenticate/:provider        controllers.SocialAuthController.authenticate(provider: String)

@@ -6,7 +6,8 @@ import OrdersList from './components/orders_list'
 import CustomersList from './components/customers_list'
 import OrderPreview from './components/order_preview'
 import Order from './components/order'
-import Login from './components/login'
+import SignIn from './components/sign_in'
+import SignUp from './components/sign_up'
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
 import {
@@ -46,7 +47,8 @@ export function Main() {
                 <Nav.Item><Nav.Link href="/#/create_category">Stwórz kategorie</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/orders_list">Lista zamówień</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/clients_list">Lista klientów</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/login">Zaloguj</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/#/signin">Zaloguj</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/#/signup">Zarejestruj</Nav.Link></Nav.Item>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -59,8 +61,9 @@ export function Main() {
           <MyRoute path="/clients_list" component={CustomersList}/>
           <MyRoute path="/order_preview" component={OrderPreview}/>
           <MyRoute path="/order" component={Order}/>
-          <MyRoute path="/login" component={Login} />
-          <MyRoute component={Login} />
+          <MyRoute path="/signin" component={SignIn} />
+          <MyRoute path="/signup" component={SignUp} />
+          <MyRoute component={SignIn} />
         </Switch>
       </Router>
     </>
