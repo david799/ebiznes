@@ -34,8 +34,8 @@ class OrderController @Inject()(orderRepository: OrderRepository, customerReposi
     val orderedProducts = Await.ready(orderedProductRepository.getOrderProducts(id), Duration.Inf).value.get.get
     var products = List[Product]()
     for (orderedProduct <- orderedProducts){
-      val temp_product = Await.ready(productRepository.getById(orderedProduct.product), Duration.Inf).value.get.get
-      products = temp_product :: products
+      val tempProduct = Await.ready(productRepository.getById(orderedProduct.product), Duration.Inf).value.get.get
+      products = tempProduct :: products
     }
     val orderForFrontend = OrderForFrontend(id, address.name, address.addressLine1, address.addressLine2, products)
 
@@ -48,13 +48,13 @@ class OrderController @Inject()(orderRepository: OrderRepository, customerReposi
   }
 
   def addOrder(): Action[AnyContent] = Action { implicit request =>
-    val order_json = request.body.asJson.get
-    val order_content = order_json.as[OrderContentForm]
-    val customer: Customer = Await.ready(customerRepository.create(order_content.name), Duration.Inf).value.get.get
-    val address: Address = Await.ready(addressRepository.create(order_content.name, customer.id, order_content.addressLine1, order_content.addressLine2), Duration.Inf).value.get.get
+    val orderJson = request.body.asJson.get
+    val orderContent = orderJson.as[OrderContentForm]
+    val customer: Customer = Await.ready(customerRepository.create(orderContent.name), Duration.Inf).value.get.get
+    val address: Address = Await.ready(addressRepository.create(orderContent.name, customer.id, orderContent.addressLine1, orderContent.addressLine2), Duration.Inf).value.get.get
     val order: Order = Await.ready(orderRepository.create(customer.id, address.id), Duration.Inf).value.get.get
 
-    for (product_id <- order_content.products){
+    for (product_id <- orderContent.products){
       Await.ready(orderedProductRepository.create(order.id, product_id), Duration.Inf).value.get.get
     }
 

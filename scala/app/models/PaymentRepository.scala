@@ -58,8 +58,8 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, ord
     payment.filter(_.id === id).result.headOption
   }
 
-  def getByOrders(orders_ids: List[Int]): Future[Seq[Payment]] = db.run {
-    payment.filter(_.order inSet orders_ids).result
+  def getByOrders(ordersIds: List[Int]): Future[Seq[Payment]] = db.run {
+    payment.filter(_.order inSet ordersIds).result
   }
 
   def delete(id: Int): Future[Unit] = db.run(payment.filter(_.id === id).delete).map(_ => ())
