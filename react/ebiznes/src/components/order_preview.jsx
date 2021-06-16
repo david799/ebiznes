@@ -60,23 +60,23 @@ export function OrderPreview() {
                     products.map((product) => {
                         return (
                             <Row className="my-1">
-                                <Col><b>Nazwa:</b> {product.name}</Col>
-                                <Col><b>Opis:</b> {product.description}</Col>
-                                <Col><b>Cena:</b> {Math.round((product.price + Number.EPSILON) * 100) / 100}zł</Col>
+                                <Col className="m-0"><b>Nazwa:</b> {product.name}</Col>
+                                <Col className="m-0"><b>Opis:</b> {product.description}</Col>
+                                <Col className="m-0"><b>Cena:</b> {Math.round((product.price + Number.EPSILON) * 100) / 100}zł</Col>
                             </Row>
                         )
                     })
                 }
                 <Form>
-                    <Form.Group controlId='customerName'>
+                    <Form.Group controlId='customerNamePreview'>
                         <Form.Label>Imie i nazwisko</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setName(e.target.value); }} />
                     </Form.Group>
-                    <Form.Group controlId='customerAddresLine1'>
+                    <Form.Group controlId='customerAddresLine1Preview'>
                         <Form.Label>Adres linia 1</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setAddressLine1(e.target.value); }} />
                     </Form.Group>
-                    <Form.Group controlId='customerAddresLine2'>
+                    <Form.Group controlId='customerAddresLine2Preview'>
                         <Form.Label>Adres linia 2</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setAddressLine2(e.target.value); }} />
                     </Form.Group>
