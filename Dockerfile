@@ -31,6 +31,6 @@ VOLUME /common_vol
 
 RUN mkdir ebiznes
 WORKDIR /home/dstec/ebiznes
-COPY ./scala ./
+COPY . .
 
 CMD ["sbt", "run"]
