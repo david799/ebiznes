@@ -31,7 +31,7 @@ VOLUME /common_vol
 
 RUN mkdir ebiznes
 WORKDIR /home/dstec/ebiznes
-COPY ./react/ebiznes ./
+COPY . .
 RUN npm install
 
 CMD ["npm", "start"]
