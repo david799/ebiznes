@@ -34,4 +34,4 @@ WORKDIR /home/dstec/ebiznes
 COPY . .
 WORKDIR /home/dstec/ebiznes/scala
 
-CMD ["sbt", "run"]
+CMD sbt run
