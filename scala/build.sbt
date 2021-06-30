@@ -16,6 +16,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick-evolutions" % "4.0.0",
   "org.xerial"        %  "sqlite-jdbc" % "3.30.1"
 )
-
+resolvers += "Atlassian's Maven Public Repository" at "https://packages.atlassian.com/maven-public/"
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
 
