@@ -23,6 +23,8 @@ WORKDIR /home/dstec/ebiznes
 COPY . .
 WORKDIR /home/dstec/ebiznes/scala
 
+RUN add-apt-repository -y ppa:openjdk-r/ppa
+RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y openjdk-8-jre
 RUN update-alternatives --config java
