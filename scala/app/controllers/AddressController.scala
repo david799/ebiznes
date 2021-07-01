@@ -31,7 +31,7 @@ class AddressController @Inject()(addressRepository: AddressRepository, cc: Mess
     val temp = addressRepository.getByIdOption(id)
     temp.map(addresses => addresses match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.AddressController.getAddresses())
+      case None => BadRequest("Does not exist")
     })
   }
 

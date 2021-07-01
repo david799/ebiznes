@@ -31,7 +31,7 @@ class CustomerController @Inject()(customerRepository: CustomerRepository, cc: M
     val temp = customerRepository.getByIdOption(id)
     temp.map(customers => customers match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.CustomerController.getCustomers())
+      case None => BadRequest("Does not exist")
     })
   }
 

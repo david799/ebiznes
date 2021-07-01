@@ -31,7 +31,7 @@ class ReturnController @Inject()(returnRepository: ReturnRepository, cc: Message
     val temp = returnRepository.getByIdOption(id)
     temp.map(returns => returns match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.ReturnController.getReturns())
+      case None => BadRequest("Does not exist")
     })
   }
 

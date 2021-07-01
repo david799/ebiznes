@@ -33,7 +33,7 @@ class RatingController @Inject()(ratingRepository: RatingRepository, cc: Message
     val temp = ratingRepository.getByIdOption(id)
     temp.map(ratings => ratings match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.RatingController.getRatings())
+      case None => BadRequest("Does not exist")
     })
   }
 

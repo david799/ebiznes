@@ -28,7 +28,7 @@ class CouponController @Inject()(couponRepository: CouponRepository, cc: Message
     val temp = couponRepository.getByIdOption(id)
     temp.map(coupons => coupons match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.CouponController.getCoupons())
+      case None => BadRequest("Does not exist")
     })
   }
 

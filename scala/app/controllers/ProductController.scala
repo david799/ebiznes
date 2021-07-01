@@ -34,7 +34,7 @@ class ProductController @Inject()(productsRepo: ProductRepository, cc: MessagesC
     val produkt = productsRepo.getByIdOption(id)
     produkt.map(product => product match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.ProductController.getProducts())
+      case None => BadRequest("Does not exist")
     })
   }
 
