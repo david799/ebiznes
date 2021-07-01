@@ -22,7 +22,8 @@ RUN curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E4
 RUN apt-get update
 RUN apt-get install -y sbt=1.5.2
 
-RUN apt-get install -y scala=2.12.13
+RUN wget www.scala-lang.org/files/archive/scala-2.12.13.deb
+RUN dpkg -i scala-2.12.13.deb
 
 EXPOSE 8080
 EXPOSE 9000
