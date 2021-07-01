@@ -5,23 +5,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update && apt install -y build-essential unzip vim git curl wget zip
 
-RUN apt-get update &&\
-    apt-get upgrade -y &&\
-    apt-get install -y  software-properties-common
-
-EXPOSE 8080
-EXPOSE 9000
-
-RUN useradd -ms /bin/bash dstec
-RUN adduser dstec sudo
-
-USER dstec
-WORKDIR /home/dstec/
-
-RUN mkdir ebiznes
-WORKDIR /home/dstec/ebiznes
-COPY . .
-WORKDIR /home/dstec/ebiznes/scala
+RUN apt-get update
+RUN apt-get -y install software-properties-common
 
 RUN apt install -y openjdk-8-jdk
 RUN apt install -y openjdk-8-jre
@@ -39,5 +24,19 @@ RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee /etc/apt/sourc
 RUN curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | apt-key add
 RUN apt-get update
 RUN apt-get install -y sbt
+
+EXPOSE 8080
+EXPOSE 9000
+
+RUN useradd -ms /bin/bash dstec
+RUN adduser dstec sudo
+
+USER dstec
+WORKDIR /home/dstec/
+
+RUN mkdir ebiznes
+WORKDIR /home/dstec/ebiznes
+COPY . .
+WORKDIR /home/dstec/ebiznes/scala
 
 CMD sbt run
