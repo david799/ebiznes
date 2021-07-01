@@ -27,6 +27,8 @@ RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install java 8
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install sbt 1.5.2"
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install scala 2.12.13"
 
+RUN apt-get update && apt-get install -y sbt
+
 VOLUME /common_vol
 
 RUN mkdir ebiznes
