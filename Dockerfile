@@ -9,7 +9,6 @@ RUN apt-get update &&\
 	apt-get upgrade -y &&\
     apt-get install -y  software-properties-common
 
-
 EXPOSE 8080
 EXPOSE 9000
 
@@ -25,7 +24,7 @@ COPY . .
 WORKDIR /home/dstec/ebiznes/scala
 
 RUN curl -s "https://get.sdkman.io" | bash
-RUN chmod a+x "/home/dstec/ebiznes/scala/.sdkman/bin/sdkman-init.sh"
+RUN chmod a+x "/home/dstec/.sdkman/bin/sdkman-init.sh"
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.272.hs-adpt"
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install sbt 1.5.2"
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install scala 2.12.13"
