@@ -29,4 +29,4 @@ RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install java 8
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install sbt 1.5.2"
 RUN bash -c "source /home/dstec/.sdkman/bin/sdkman-init.sh && sdk install scala 2.12.13"
 
-CMD sbt run
+CMD /home/dstec/.sdkman/candidates/sbt/1.5.2/bin/sbt run
