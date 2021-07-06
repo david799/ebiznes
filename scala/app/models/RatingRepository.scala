@@ -26,7 +26,7 @@ class RatingRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, orde
 
     def order = column[Int]("order")
 
-    def order_fk = foreignKey("order_fk",order, order_tq)(_.id)
+    def orderFk = foreignKey("order_fk",order, order_tq)(_.id)
 
 
     /**
@@ -63,8 +63,8 @@ class RatingRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, orde
     rating.result
   }
 
-  def getByOrder(order_id: Int): Future[Seq[Rating]] = db.run {
-    rating.filter(_.order === order_id).result
+  def getByOrder(orderId: Int): Future[Seq[Rating]] = db.run {
+    rating.filter(_.order === orderId).result
   }
 
   def getById(id: Int): Future[Rating] = db.run {
@@ -75,14 +75,14 @@ class RatingRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, orde
     rating.filter(_.id === id).result.headOption
   }
 
-  def getByOrders(order_ids: List[Int]): Future[Seq[Rating]] = db.run {
-    rating.filter(_.order inSet order_ids).result
+  def getByOrders(orderIds: List[Int]): Future[Seq[Rating]] = db.run {
+    rating.filter(_.order inSet orderIds).result
   }
 
   def delete(id: Int): Future[Unit] = db.run(rating.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Int, new_rating: Rating): Future[Unit] = {
-    val ratingToUpdate: Rating = new_rating.copy(id)
+  def update(id: Int, newRating: Rating): Future[Unit] = {
+    val ratingToUpdate: Rating = newRating.copy(id)
     db.run(rating.filter(_.id === id).update(ratingToUpdate)).map(_ => ())
   }
 

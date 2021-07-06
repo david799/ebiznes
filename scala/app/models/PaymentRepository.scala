@@ -21,7 +21,7 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, ord
 
     def amount = column[Float]("amount")
 
-    def order_fk = foreignKey("order_fk", order, order_tq)(_.id)
+    def orderFk = foreignKey("order_fk", order, order_tq)(_.id)
 
     def * = (id, order, amount) <> ((Payment.apply _).tupled, Payment.unapply)
 
@@ -46,8 +46,8 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, ord
     payment.result
   }
 
-  def getByOrder(order_id: Int): Future[Seq[Payment]] = db.run {
-    payment.filter(_.order === order_id).result
+  def getByOrder(orderId: Int): Future[Seq[Payment]] = db.run {
+    payment.filter(_.order === orderId).result
   }
 
   def getById(id: Int): Future[Payment] = db.run {
@@ -58,14 +58,14 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, ord
     payment.filter(_.id === id).result.headOption
   }
 
-  def getByOrders(orders_ids: List[Int]): Future[Seq[Payment]] = db.run {
-    payment.filter(_.order inSet orders_ids).result
+  def getByOrders(ordersIds: List[Int]): Future[Seq[Payment]] = db.run {
+    payment.filter(_.order inSet ordersIds).result
   }
 
   def delete(id: Int): Future[Unit] = db.run(payment.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Int, new_payment: Payment): Future[Unit] = {
-    val productToUpdate: Payment = new_payment.copy(id)
+  def update(id: Int, newPayment: Payment): Future[Unit] = {
+    val productToUpdate: Payment = newPayment.copy(id)
     db.run(payment.filter(_.id === id).update(productToUpdate)).map(_ => ())
   }
 }

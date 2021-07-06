@@ -41,8 +41,8 @@ class ReturnController @Inject()(returnRepository: ReturnRepository, cc: Message
   }
 
   def addReturn(): Action[AnyContent] = Action { implicit request =>
-    val return_json = request.body.asJson.get
-    val returnn = return_json.as[Return]
+    val returnJson = request.body.asJson.get
+    val returnn = returnJson.as[Return]
     returnRepository.create(returnn.description, returnn.order)
     Ok("Created")
   }

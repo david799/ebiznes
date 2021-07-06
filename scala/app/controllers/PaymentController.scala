@@ -42,8 +42,8 @@ class PaymentController @Inject()(paymentRepository: PaymentRepository, cc: Mess
   }
 
   def addPayment(): Action[AnyContent] = Action { implicit request =>
-    val payment_json = request.body.asJson.get
-    val payment = payment_json.as[Payment]
+    val paymentJson = request.body.asJson.get
+    val payment = paymentJson.as[Payment]
     paymentRepository.create(payment.order, payment.amount)
     Ok("Created")
   }

@@ -43,8 +43,8 @@ class RatingController @Inject()(ratingRepository: RatingRepository, cc: Message
   }
 
   def addRating(): Action[AnyContent] = Action { implicit request =>
-    val rating_json = request.body.asJson.get
-    val rating = rating_json.as[Rating]
+    val ratingJson = request.body.asJson.get
+    val rating = ratingJson.as[Rating]
     ratingRepository.create(rating.grade, rating.description, rating.order)
     Ok("Created")
   }

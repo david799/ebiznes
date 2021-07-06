@@ -17,18 +17,18 @@ class AddressRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def name = column[String]("name")
     def customer = column[Int]("customer")
-    def address_line1 = column[String]("address_line1")
-    def address_line2 = column[String]("address_line2")
-    def * = (id, name, customer, address_line1, address_line2) <> ((Address.apply _).tupled, Address.unapply)
+    def addressLine1 = column[String]("address_line1")
+    def addressLine2 = column[String]("address_line2")
+    def * = (id, name, customer, addressLine1, addressLine2) <> ((Address.apply _).tupled, Address.unapply)
   }
 
   val address = TableQuery[AddressTable]
 
-  def create(name: String, customer: Int, address_line1: String, address_line2: String): Future[Address] = db.run {
-    (address.map(c => (c.name, c.customer, c.address_line1, c.address_line2))
+  def create(name: String, customer: Int, addressLine1: String, addressLine2: String): Future[Address] = db.run {
+    (address.map(c => (c.name, c.customer, c.addressLine1, c.addressLine2))
       returning address.map(_.id)
-      into {case ((name, customer, address_line1, address_line2),id) => Address(id, name, customer, address_line1, address_line2)}
-      ) += (name, customer, address_line1, address_line2)
+      into {case ((name, customer, addressLine1, addressLine2),id) => Address(id, name, customer, addressLine1, addressLine2)}
+      ) += (name, customer, addressLine1, addressLine2)
   }
 
   def list(): Future[Seq[Address]] = db.run {
@@ -45,8 +45,8 @@ class AddressRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
 
   def delete(id: Int): Future[Unit] = db.run(address.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Int, new_address: Address): Future[Unit] = {
-    val addressToUpdate: Address = new_address.copy(id)
+  def update(id: Int, newAddress: Address): Future[Unit] = {
+    val addressToUpdate: Address = newAddress.copy(id)
     db.run(address.filter(_.id === id).update(addressToUpdate)).map(_ => ())
   }
 }

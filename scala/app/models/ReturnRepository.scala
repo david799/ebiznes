@@ -19,7 +19,7 @@ class ReturnRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, orde
 
     def order = column[Int]("order")
 
-    def order_fk = foreignKey("order_fk",order, order_tq)(_.id)
+    def orderFk = foreignKey("order_fk",order, order_tq)(_.id)
 
     def * = (id, description, order) <> ((Return.apply _).tupled, Return.unapply)
   }
@@ -41,8 +41,8 @@ class ReturnRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, orde
     return_tq.result
   }
 
-  def getByOrder(order_id: Int): Future[Seq[Return]] = db.run {
-    return_tq.filter(_.order === order_id).result
+  def getByOrder(orderId: Int): Future[Seq[Return]] = db.run {
+    return_tq.filter(_.order === orderId).result
   }
 
   def getById(id: Int): Future[Return] = db.run {
@@ -53,14 +53,14 @@ class ReturnRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, orde
     return_tq.filter(_.id === id).result.headOption
   }
 
-  def getByOrders(order_ids: List[Int]): Future[Seq[Return]] = db.run {
-    return_tq.filter(_.order inSet order_ids).result
+  def getByOrders(orderIds: List[Int]): Future[Seq[Return]] = db.run {
+    return_tq.filter(_.order inSet orderIds).result
   }
 
   def delete(id: Int): Future[Unit] = db.run(return_tq.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Int, new_rating: Return): Future[Unit] = {
-    val returnToUpdate: Return = new_rating.copy(id)
+  def update(id: Int, newRating: Return): Future[Unit] = {
+    val returnToUpdate: Return = newRating.copy(id)
     db.run(return_tq.filter(_.id === id).update(returnToUpdate)).map(_ => ())
   }
 }
