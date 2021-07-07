@@ -16,5 +16,5 @@ abstract class AbstractAuthController(scc: DefaultSilhouetteControllerComponents
           authenticatorService.embed(v, Ok(Json.toJson(user)).as("application/json"))
         }
       }
-  }a
+  }
 }
