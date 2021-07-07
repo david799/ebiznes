@@ -25,7 +25,6 @@ RUN apt-get install -y sbt=1.5.2
 RUN wget www.scala-lang.org/files/archive/scala-2.12.13.deb
 RUN dpkg -i scala-2.12.13.deb
 
-EXPOSE 8080
 EXPOSE 9000
 
 RUN useradd -ms /bin/bash dstec
