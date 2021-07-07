@@ -14,7 +14,7 @@ export function ProductsList() {
 
     const getCategories = async () => {
         try {
-            const response = await axios.get(`https://ebiznesbackend.azurewebsites.net/categories`).then(res => {
+            await axios.get(`https://ebiznesbackend.azurewebsites.net/categories`).then(res => {
                 setCategories(res.data)
             });
         } catch (e) {
@@ -28,7 +28,7 @@ export function ProductsList() {
 
     const getProducts = async () => {
         try {
-            const response = await axios.get(`https://ebiznesbackend.azurewebsites.net/products`).then(res => {
+            await axios.get(`https://ebiznesbackend.azurewebsites.net/products`).then(res => {
                 setProducts(res.data)
             });
         } catch (e) {

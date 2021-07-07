@@ -44,6 +44,7 @@ export function Login() {
                 crossorigin="anonymous"
             />
             <Form className="m-3">
+                <h1>Zarejestruj</h1>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control type="email"  onChange={(e) => { setEmail(e.target.value) }}/>
