@@ -15,7 +15,7 @@ export function Order() {
 
     const getOrder = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/order/` + orderId).then(res => {
+            const response = await axios.get(`https://ebiznesbackend.azurewebsites.net/order/` + orderId).then(res => {
                 setOrder(res.data)
             });
         } catch (e) {

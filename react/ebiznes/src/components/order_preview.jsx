@@ -31,7 +31,7 @@ export function OrderPreview() {
             'addressLine2': addressLine2,
             'products': products_ids
         }
-        axios.post(`http://localhost:9000/addorder`,
+        axios.post(`https://ebiznesbackend.azurewebsites.net/addorder`,
             json,
             {
                 headers: {

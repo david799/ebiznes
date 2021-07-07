@@ -9,7 +9,7 @@ export function CustomerList() {
 
     const getCustomers = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/addresses`).then(res => {
+            const response = await axios.get(`https://ebiznesbackend.azurewebsites.net/addresses`).then(res => {
                 setCustomers(res.data)
             });
         } catch (e) {

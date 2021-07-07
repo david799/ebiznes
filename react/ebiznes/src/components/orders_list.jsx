@@ -10,7 +10,7 @@ export function OrdersList() {
 
     const getOrders = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/orders`).then(res => {
+            const response = await axios.get(`https://ebiznesbackend.azurewebsites.net/orders`).then(res => {
                 setOrders(res.data)
             });
         } catch (e) {

@@ -10,7 +10,7 @@ export function Login() {
     function signIn(){
         axios
             .post(
-                `https://ebiznesbackend.azurewebsites.net/signIn`,
+                `https://ebiznesbackend.azurewebsites.net/signUp`,
                 {
                     email: email,
                     password: password
@@ -22,13 +22,12 @@ export function Login() {
                 }
             )
             .then((response) => {
-                if (response.status !== 200) {
-                    alert("Nie udało się zalogować!")
+                if (response.status !== 201) {
+                    alert("Nie udało się zarejestrować!")
                 }
-                else if (response.status === 200) {
-                    alert("Zalogowano!")
+                else if (response.status === 201) {
+                    alert("Zarejestrowano!")
                 }
-                console.log(response)
             })
             .catch((error) => {
                 if (error.status !== 200) {
@@ -46,16 +45,16 @@ export function Login() {
             />
             <Form className="m-3">
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Email:</Form.Label>
                     <Form.Control type="email"  onChange={(e) => { setEmail(e.target.value) }}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Hasło</Form.Label>
+                    <Form.Label>Hasło:</Form.Label>
                     <Form.Control type="password" onChange={(e) => { setPassword(e.target.value) }}/>
                 </Form.Group>
                 <Button variant="primary" type="submit" onClick={() => signIn()}>
-                    Zaloguj
+                    Zarejestruj
                 </Button>
             </Form>
         </>

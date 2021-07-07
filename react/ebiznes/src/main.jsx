@@ -7,6 +7,7 @@ import CustomersList from './components/customers_list'
 import OrderPreview from './components/order_preview'
 import Order from './components/order'
 import Login from './components/login'
+import Register from './components/register'
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
 import {
@@ -47,6 +48,7 @@ export function Main() {
                 <Nav.Item><Nav.Link href="/#/orders_list">Lista zamówień</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/clients_list">Lista klientów</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link href="/#/login">Zaloguj</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/#/register">Zarejestruj</Nav.Link></Nav.Item>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -60,6 +62,7 @@ export function Main() {
           <MyRoute path="/order_preview" component={OrderPreview}/>
           <MyRoute path="/order" component={Order}/>
           <MyRoute path="/login" component={Login} />
+          <MyRoute path="/register" component={Register} />
           <MyRoute component={Login} />
         </Switch>
       </Router>

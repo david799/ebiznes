@@ -16,7 +16,7 @@ export function CreateCategory() {
             'id': 0,
             'name': newCategoryName
         }
-        axios.post(`http://localhost:9000/addcategory`,
+        axios.post(`https://ebiznesbackend.azurewebsites.net/addcategory`,
             json,
             {
                 headers: {

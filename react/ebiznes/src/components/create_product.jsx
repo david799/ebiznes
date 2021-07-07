@@ -14,7 +14,7 @@ export function CreateProduct() {
 
     const getCategories = async () => {
         try {
-            const response = await axios.get(`http://localhost:9000/categories`).then(res => {
+            const response = await axios.get(`https://ebiznesbackend.azurewebsites.net/categories`).then(res => {
                 setCategories(res.data)
             });
         } catch (e) {
@@ -38,7 +38,7 @@ export function CreateProduct() {
             "category": newProductCategory,
             "price": parseFloat(newProductPrice),
         }
-        axios.post(`http://localhost:9000/addproduct`,
+        axios.post(`https://ebiznesbackend.azurewebsites.net/addproduct`,
             json,
             {
                 headers: {
