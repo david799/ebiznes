@@ -39,7 +39,7 @@ export function CreateCategory() {
                         <Form.Label>Nazwa kategorii</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setNewCategoryName(e.target.value); }} />
                     </Form.Group>
-                    <Button variant="primary" type='submit' onClick={() => AddCategory()}>Dodaj kategorie</Button>
+                    <Button variant="primary" onClick={() => AddCategory()}>Dodaj kategorie</Button>
                 </Form>
             </div>
         </>

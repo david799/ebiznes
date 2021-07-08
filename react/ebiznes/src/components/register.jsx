@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom'
 import axios from "axios";
 import React, { useState } from "react";
 
-export function Login() {
+export function Register({ history }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    function signIn(){
+    function signUp(){
         axios
             .post(
                 `https://ebiznesbackend.azurewebsites.net/signUp`,
@@ -22,11 +22,8 @@ export function Login() {
                 }
             )
             .then((response) => {
-                if (response.status !== 201) {
-                    alert("Nie udało się zarejestrować!")
-                }
-                else if (response.status === 201) {
-                    alert("Zarejestrowano!")
+                if (response.status === 201) {
+                    history.push("/login");
                 }
             })
             .catch((error) => {
@@ -54,7 +51,7 @@ export function Login() {
                     <Form.Label>Hasło:</Form.Label>
                     <Form.Control type="password" onChange={(e) => { setPassword(e.target.value) }}/>
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={() => signIn()}>
+                <Button variant="primary" onClick={() => signUp()}>
                     Zarejestruj
                 </Button>
             </Form>
@@ -62,4 +59,4 @@ export function Login() {
     );
 }
 
-export default withRouter(Login);
+export default withRouter(Register);

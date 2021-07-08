@@ -18,7 +18,7 @@ import {
   Route
 } from "react-router-dom";
 
-export function Main() {
+export function Main({ history }) {
   const MyRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
@@ -42,7 +42,7 @@ export function Main() {
       )
     Cookies.remove("email");
     Cookies.remove("userId");
-    window.location.reload();
+    history.push("/login");
   }
 
   let isLoggedIn = (Cookies.get("id") !== null && Cookies.get("userId") !== undefined)

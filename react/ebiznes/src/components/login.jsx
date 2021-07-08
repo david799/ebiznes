@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 
-export function Login() {
+export function Login({ history }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -23,15 +23,11 @@ export function Login() {
                 }
             )
             .then((response) => {
-                if (response.status !== 200) {
-                    alert("Nie udało się zalogować!")
-                }
-                else if (response.status === 200) {
+                if (response.status === 200) {
                     Cookies.set("email", response.data.email);
                     Cookies.set("userId", response.data.id);
-                    alert("Zalogowano!")
+                    history.push("/products_list");
                 }
-                console.log(response)
             })
             .catch((error) => {
                 if (error.status !== 200) {
@@ -58,7 +54,7 @@ export function Login() {
                     <Form.Label>Hasło</Form.Label>
                     <Form.Control type="password" onChange={(e) => { setPassword(e.target.value) }}/>
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={() => signIn()}>
+                <Button variant="primary" onClick={() => signIn()}>
                     Zaloguj
                 </Button>
             </Form>
