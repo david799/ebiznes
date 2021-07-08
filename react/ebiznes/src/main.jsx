@@ -9,6 +9,8 @@ import Order from './components/order'
 import Login from './components/login'
 import Register from './components/register'
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import Cookies from "js-cookie";
+import axios from "axios";
 
 import {
   HashRouter as Router,
@@ -25,6 +27,25 @@ export function Main() {
       }}
     />
   );
+
+  function signOut() {
+    axios
+      .post(
+        `https://ebiznesbackend.azurewebsites.net/signOut`,
+        {
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+    Cookies.remove("email");
+    Cookies.remove("userId");
+    window.location.reload();
+  }
+
+  let isLoggedIn = (Cookies.get("id") !== null && Cookies.get("userId") !== undefined)
   return (
     <>
       <Router>
@@ -38,17 +59,18 @@ export function Main() {
                 height="30"
                 className="d-inline-block align-top"
               />{' '}
-              </Navbar.Brand>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Item><Nav.Link href="/#/products_list">Lista produktów</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/create_product">Stwórz produkt</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/create_category">Stwórz kategorie</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/orders_list">Lista zamówień</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/clients_list">Lista klientów</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/login">Zaloguj</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="/#/register">Zarejestruj</Nav.Link></Nav.Item>
+                {isLoggedIn ? <Nav.Item><Nav.Link href="/#/products_list">Lista produktów</Nav.Link></Nav.Item> : <div></div>}
+                {isLoggedIn ? <Nav.Item><Nav.Link href="/#/create_product">Stwórz produkt</Nav.Link></Nav.Item> : <div></div>}
+                {isLoggedIn ? <Nav.Item><Nav.Link href="/#/create_category">Stwórz kategorie</Nav.Link></Nav.Item> : <div></div>}
+                {isLoggedIn ? <Nav.Item><Nav.Link href="/#/orders_list">Lista zamówień</Nav.Link></Nav.Item> : <div></div>}
+                {isLoggedIn ? <Nav.Item><Nav.Link href="/#/clients_list">Lista klientów</Nav.Link></Nav.Item> : <div></div>}
+                {isLoggedIn ? <div></div> : <Nav.Item><Nav.Link href="/#/login">Zaloguj</Nav.Link></Nav.Item>}
+                {isLoggedIn ? <div></div> : <Nav.Item><Nav.Link href="/#/register">Zarejestruj</Nav.Link></Nav.Item>}
+                {isLoggedIn ? <Nav.Item><Nav.Link onClick={() => signOut()}>Wyloguj</Nav.Link></Nav.Item> : <div></div>}
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -58,9 +80,9 @@ export function Main() {
           <MyRoute path="/create_product" component={CreateProduct} />
           <MyRoute path="/create_category" component={CreateCategory} />
           <MyRoute path="/orders_list" component={OrdersList} />
-          <MyRoute path="/clients_list" component={CustomersList}/>
-          <MyRoute path="/order_preview" component={OrderPreview}/>
-          <MyRoute path="/order" component={Order}/>
+          <MyRoute path="/clients_list" component={CustomersList} />
+          <MyRoute path="/order_preview" component={OrderPreview} />
+          <MyRoute path="/order" component={Order} />
           <MyRoute path="/login" component={Login} />
           <MyRoute path="/register" component={Register} />
           <MyRoute component={Login} />

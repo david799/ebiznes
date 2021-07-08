@@ -26,10 +26,6 @@ export function CreateProduct() {
         getCategories();
     }, [])
 
-    let handleSubmit = event => {
-        AddProduct()
-    }
-
     function AddProduct() {
         let json = {
             "id": 0,
@@ -60,7 +56,7 @@ export function CreateProduct() {
             />
             <div className="px-md-5 pt-md-4">
                 <h1>Dodaj nowy produkt</h1>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={ () => AddProduct()}>
                     <Form.Group controlId='newProductName'>
                         <Form.Label>Nazwa produktu</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setNewProductName(e.target.value); }} />
@@ -79,7 +75,7 @@ export function CreateProduct() {
                             <DropdownButton variant="outline-secondary" title="Kategorie" id="input-group-dropdown-1">
                                 {
                                     categories.map((category) => {
-                                        return <Dropdown.Item href="#" onSelect={(e) => { setNewProductCategory(category.id); setNewProductCategoryName(category.name) }}>{category.name}</Dropdown.Item>
+                                        return <Dropdown.Item key={"selectCategory" + category.id} href="#" onSelect={(e) => { setNewProductCategory(category.id); setNewProductCategoryName(category.name) }}>{category.name}</Dropdown.Item>
                                     }
                                     )
                                 }

@@ -2,6 +2,7 @@ import { Form, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 import axios from "axios";
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 export function Login() {
     const [email, setEmail] = useState("")
@@ -26,6 +27,8 @@ export function Login() {
                     alert("Nie udało się zalogować!")
                 }
                 else if (response.status === 200) {
+                    Cookies.set("email", response.data.email);
+                    Cookies.set("userId", response.data.id);
                     alert("Zalogowano!")
                 }
                 console.log(response)

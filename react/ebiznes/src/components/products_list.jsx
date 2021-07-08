@@ -88,14 +88,14 @@ export function ProductsList() {
                 {
                     categories.map((category) => {
                         return (
-                            <div>
+                            <div key={"category" + category.id}>
                                 <h1>{category.name}</h1>
                                 {
                                     products.map((product) => {
                                         if (category.id === product.category) {
                                             colouring_index++
                                             return (
-                                                <Row style={colours[colouring_index % 2]} className="my-1">
+                                                <Row style={colours[colouring_index % 2]} className="my-1" key={"product" + product.id}>
                                                     <Col><b>Nazwa:</b> {product.name}</Col>
                                                     <Col><b>Opis:</b> {product.description}</Col>
                                                     <Col><b>Cena:</b> {Math.round((product.price + Number.EPSILON) * 100) / 100}zł</Col>

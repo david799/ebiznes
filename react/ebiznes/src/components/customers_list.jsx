@@ -38,7 +38,7 @@ export function CustomerList() {
                     customers.map((customer) => {
                         colouring_index++
                         return (
-                            <div>
+                            <div key={"customer" + customer.id}>
                                 <Row style={colours[colouring_index % 2]} className="my-1">
                                     <Col><b>Id klienta:</b> {customer.customer}</Col>
                                     <Col><b>Imie i nazwisko:</b> {customer.name}</Col>

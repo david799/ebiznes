@@ -7,10 +7,6 @@ export function CreateCategory() {
 
     const [newCategoryName, setNewCategoryName] = useState('');
 
-    let handleSubmit = event => {
-        AddCategory()
-    }
-
     function AddCategory() {
         let json = {
             'id': 0,
@@ -38,12 +34,12 @@ export function CreateCategory() {
             />
             <div className="px-md-5 pt-md-4">
                 <h1>Dodaj nową kategorię</h1>
-                <Form onSubmit={handleSubmit}>
+                <Form>
                     <Form.Group controlId='newCategoryName'>
                         <Form.Label>Nazwa kategorii</Form.Label>
                         <Form.Control as="textarea" rows={1} type="text" onChange={(e) => { setNewCategoryName(e.target.value); }} />
                     </Form.Group>
-                    <Button variant="primary" type='submit'>Dodaj kategorie</Button>
+                    <Button variant="primary" type='submit' onClick={() => AddCategory()}>Dodaj kategorie</Button>
                 </Form>
             </div>
         </>
