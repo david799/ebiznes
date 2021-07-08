@@ -28,7 +28,7 @@ export function Register({ history }) {
             })
             .catch((error) => {
                 if (error.status !== 200) {
-                    alert("Nie udało się zalogować!")
+                    alert("Nie udało się zarejestrowac!\nPrawdopodobnie istnieje juz uzytkownik o podanym mailu.")
                 }
             })
     }
