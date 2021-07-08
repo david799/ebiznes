@@ -10,7 +10,7 @@ export function OrdersList() {
 
     const getOrders = async () => {
         try {
-            await axios.get(`http://localhost:9000/orders`).then(res => {
+            await axios.get(`https://ebiznesbackend.azurewebsites.net/orders`).then(res => {
                 setOrders(res.data)
             });
         } catch (e) {
@@ -23,7 +23,7 @@ export function OrdersList() {
     }, [])
 
     function handleViewOrder(order_id){
-        history.push({
+        history.push({ 
             pathname: '/order',
             state: {'order_id': order_id}
         });
@@ -42,7 +42,7 @@ export function OrdersList() {
                 {
                     orders.map((order) => {
                         return (
-                            <div>
+                            <div key={"order" + order.id}>
                                 <Row className="my-1">
                                     <Badge className="m-1" variant="light"><h5><b>Id:</b> {order.id}</h5></Badge>
                                     <Button onClick={() => handleViewOrder(order.id)}>Zobacz szczegóły</Button>

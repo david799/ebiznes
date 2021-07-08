@@ -32,7 +32,7 @@ class PaymentController @Inject()(paymentRepository: PaymentRepository, cc: Mess
     val temp = paymentRepository.getByIdOption(id)
     temp.map(payments => payments match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.PaymentController.getPayments())
+      case None => BadRequest("Does not exist")
     })
   }
 

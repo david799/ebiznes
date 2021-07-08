@@ -30,7 +30,7 @@ class CategoryController @Inject()(categoryRepository: CategoryRepository, cc: M
     val temp = categoryRepository.getByIdOption(id)
     temp.map(categories => categories match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.CategoryController.getCategories())
+      case None => BadRequest("Does not exist")
     })
   }
 

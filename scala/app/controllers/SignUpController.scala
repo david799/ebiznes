@@ -13,6 +13,7 @@ import scala.language.postfixOps
 class SignUpController @Inject()(components: DefaultSilhouetteControllerComponents)(implicit ex: ExecutionContext) extends SilhouetteController(components) {
 
   def signUp: Action[AnyContent] = unsecuredAction.async { implicit request: Request[AnyContent] =>
+
     val json = request.body.asJson.get
     val signUpRequest = json.as[SignUpRequest]
     val loginInfo = LoginInfo(CredentialsProvider.ID, signUpRequest.email)

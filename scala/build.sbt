@@ -10,7 +10,7 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 
 resolvers += "Akka Snapshot Repository" at "https://repo.akka.io/snapshots/"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.13"
 
 libraryDependencies ++= Seq( ehcache , ws , specs2 % Test , guice )
 libraryDependencies ++= Seq(
@@ -25,6 +25,6 @@ libraryDependencies ++= Seq(
   "com.mohiva" %% "play-silhouette-totp" % "6.1.1",
   "net.codingwell" %% "scala-guice" % "4.2.6"
 )
-
+resolvers += "Atlassian's Maven Public Repository" at "https://packages.atlassian.com/maven-public/"
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
 

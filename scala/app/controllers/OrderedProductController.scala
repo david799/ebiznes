@@ -28,7 +28,7 @@ class OrderedProductController @Inject()(orderedProductRepository: OrderedProduc
     val temp = orderedProductRepository.getByIdOption(id)
     temp.map(orderedProducts => orderedProducts match {
       case Some(p) => Ok(Json.toJson(p))
-      case None => Redirect(routes.OrderedProductController.getOrderedProducts())
+      case None => BadRequest("Does not exist")
     })
   }
 

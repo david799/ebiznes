@@ -7,15 +7,15 @@ import React, { useState, useEffect } from "react";
 export function Order() {
     const location = useLocation();
     const [order, setOrder] = useState({});
+    const [orderId, setOrderId] = useState(0);
 
-    let orderId = 0
     useEffect(() => {
-        orderId = location.state.order_id
+        setOrderId(location.state.order_id)
     }, [location]);
 
     const getOrder = async () => {
         try {
-            await axios.get(`http://localhost:9000/order/` + orderId).then(res => {
+            await axios.get(`https://ebiznesbackend.azurewebsites.net/order/` + orderId).then(res => {
                 setOrder(res.data)
             });
         } catch (e) {
@@ -25,7 +25,7 @@ export function Order() {
 
     useEffect(() => {
         getOrder();
-    }, {})
+    }, )
     
     function getProducts(){
         if (order.products === undefined || order.products === null)
