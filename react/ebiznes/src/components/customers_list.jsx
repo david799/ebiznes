@@ -42,8 +42,8 @@ export function CustomerList() {
                                 <Row style={colours[colouring_index % 2]} className="my-1">
                                     <Col><b>Id klienta:</b> {customer.customer}</Col>
                                     <Col><b>Imie i nazwisko:</b> {customer.name}</Col>
-                                    <Col><b>Adres linia1:</b> {customer.address_line1}</Col>
-                                    <Col><b>Adres linia2:</b> {customer.address_line2}</Col>
+                                    <Col><b>Adres linia1:</b> {customer.addressLine1}</Col>
+                                    <Col><b>Adres linia2:</b> {customer.addressLine2}</Col>
                                 </Row>
                             </div>
                         )
