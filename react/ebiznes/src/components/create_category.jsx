@@ -19,9 +19,7 @@ export function CreateCategory() {
                     'Content-Type': 'application/json'
                 }
             }
-        ).then(res => {
-
-        })
+        )
     }
 
     return (
