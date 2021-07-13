@@ -13,7 +13,8 @@ abstract class AbstractAuthController(scc: DefaultSilhouetteControllerComponents
     authenticatorService.create(user.loginInfo)
       .flatMap { authenticator =>
         authenticatorService.init(authenticator).flatMap { v =>
-          authenticatorService.embed(v, Ok(Json.toJson(user)).as("application/json"))
+          authenticatorService.embed(v, Ok(Json.toJson(user)).as("application/json")
+                                     .withHeaders("Access-Control-Allow-Credential" -> "true"))
         }
       }
   }
