@@ -15,11 +15,11 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class SignInController @Inject()(scc: DefaultSilhouetteControllerComponents, addToken: CSRFAddToken)(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
 
-  def signIn: Action[AnyContent] = addToken(unsecuredAction.async { implicit request: Request[AnyContent] =>
-    val json = request.body.asJson.get
+  def signIn(email: String, password: String): Action[AnyContent] = addToken(unsecuredAction.async { implicit request: Request[AnyContent] =>
+    //val json = request.body.asJson.get
     val Token(name, value) = CSRF.getToken.get
-    val signInRequest = json.as[SignInRequest]
-    val credentials = Credentials(signInRequest.email, signInRequest.password)
+    //val signInRequest = json.as[SignInRequest]
+    val credentials = Credentials(email, password)
 
     credentialsProvider.authenticate(credentials).flatMap { loginInfo =>
       userRepository.retrieve(loginInfo).flatMap {
