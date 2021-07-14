@@ -11,22 +11,11 @@ export function Login({ history }) {
     function signIn(){
         axios.defaults.withCredentials = true;
         axios
-            .post(
-                `https://ebiznesbackend.azurewebsites.net/signIn`,
-                {
-                    email: email,
-                    password: password
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
+            .get(
+                `https://ebiznesbackend.azurewebsites.net/signIn/` + email + '/' + password
             )
             .then((response) => {
                 if (response.status === 200) {
-                    //Cookies.set("email", response.data.email);
-                    //Cookies.set("userId", response.data.id);
                     history.push("/products_list");
                 }
             })
@@ -35,6 +24,7 @@ export function Login({ history }) {
                     alert("Nie udało się zalogować!")
                 }
             })
+        
     }
     return (
         <>
