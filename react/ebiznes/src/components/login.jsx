@@ -9,6 +9,7 @@ export function Login({ history }) {
     const [password, setPassword] = useState("")
 
     function signIn(){
+        axios.defaults.withCredentials = true;
         axios
             .post(
                 `https://ebiznesbackend.azurewebsites.net/signIn`,
@@ -24,8 +25,8 @@ export function Login({ history }) {
             )
             .then((response) => {
                 if (response.status === 200) {
-                    Cookies.set("email", response.data.email);
-                    Cookies.set("userId", response.data.id);
+                    //Cookies.set("email", response.data.email);
+                    //Cookies.set("userId", response.data.id);
                     history.push("/products_list");
                 }
             })
