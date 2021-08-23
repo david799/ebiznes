@@ -6,7 +6,7 @@ import javax.inject.Inject
 import play.api.mvc.{Action, AnyContent, Cookie, Request}
 import play.filters.csrf.CSRF.Token
 import play.filters.csrf.{CSRF, CSRFAddToken}
-
+import play.api.mvc.Cookie.SameSite.None
 import scala.concurrent.{ExecutionContext, Future}
 
 class SocialAuthController @Inject()(scc: DefaultSilhouetteControllerComponents, addToken: CSRFAddToken)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
@@ -25,7 +25,7 @@ class SocialAuthController @Inject()(scc: DefaultSilhouetteControllerComponents,
             result <- authenticatorService.embed(value, Redirect("https://ebiznesfrontend.azurewebsites.net"))
           } yield {
             val Token(name, value) = CSRF.getToken.get
-            result.withCookies(Cookie(name, value, httpOnly = true, sameSite = "None", secure = true))
+            result.withCookies(Cookie(name, value, httpOnly = true, sameSite = Option(None), secure = true))
           }
         }
       case _ => Future.failed(new ProviderException(s"Cannot authenticate with unexpected social provider $provider"))
