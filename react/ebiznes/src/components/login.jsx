@@ -26,6 +26,9 @@ export function Login({ history }) {
             })
         
     }
+    function signInWithGoogle(){
+        window.open(`https://ebiznesbackend.azurewebsites.net/authenticate/google`)
+    }
     return (
         <>
             <link
@@ -47,6 +50,9 @@ export function Login({ history }) {
                 </Form.Group>
                 <Button variant="primary" onClick={() => signIn()}>
                     Zaloguj
+                </Button>
+                <Button className='ml-3' variant="primary" onClick={() => signInWithGoogle()}>
+                    Zaloguj przez Google
                 </Button>
             </Form>
         </>
