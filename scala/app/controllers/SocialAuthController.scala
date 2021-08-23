@@ -25,7 +25,7 @@ class SocialAuthController @Inject()(scc: DefaultSilhouetteControllerComponents,
             result <- authenticatorService.embed(value, Redirect("https://ebiznesfrontend.azurewebsites.net"))
           } yield {
             val Token(name, value) = CSRF.getToken.get
-            result.withCookies(Cookie(name, value, httpOnly = false))
+            result.withCookies(Cookie(name, value, httpOnly = true, sameSite = "None", secure = true))
           }
         }
       case _ => Future.failed(new ProviderException(s"Cannot authenticate with unexpected social provider $provider"))
